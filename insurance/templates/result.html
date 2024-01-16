@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+
+        .result-container {
+            width: 70%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .result {
+            font-size: 24px; /* 큰 글자 크기로 결과를 강조 */
+            margin-bottom: 20px;
+            color: #333; /* 결과의 가독성을 위해 어두운 색상 사용 */
+        }
+
+        .result-description {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Insurance Churn Prediction Result</h1>
+    <div class="result-container">
+        <p class="result-description">고객의 이탈/유지 예측 결과는 다음과 같습니다:</p>
+        <p class="result">{{ result }}</p> <!-- 결과를 표시하는 부분 -->
+    </div>
+</body>
+</html>

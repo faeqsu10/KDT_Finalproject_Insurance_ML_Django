@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+
+        form {
+            width: 70%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background: blue;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background: darkblue;
+        }
+    </style>
+<!--    <script>-->
+<!--        function calculateRatio() {-->
+<!--            var annualPremium = document.getElementById('curr_annual_amount').value;-->
+<!--            var annualIncome = document.getElementById('income_filled_mode').value;-->
+<!--            if (annualPremium && annualIncome) {-->
+<!--                var ratio = (annualPremium / annualIncome) * 100;-->
+<!--                document.getElementById('premium_income_ratio').value = ratio.toFixed(2);-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+</head>
+<body>
+<h1 style=“color:blue”>Car Insurance Churn Prediction</h1>
+<form action="{% url 'result' %}">
+    {% csrf_token %}
+
+    <p>작년에 지불한 연간 보험료 (달러) </p>
+    <select name="annual_amount_group_ordinal">
+        <option value="0">765 이하</option>
+        <option value="1">766 - 926</option>
+        <option value="2">927 - 1092</option>
+        <option value="3">1093 이상</option>
+    </select>
+    <br>
+
+    <p>연간 소득 (달러) :</p>
+    <select name="income_mode_5c_ordinal">
+        <option value="0">0 - 40000</option>
+        <option value="1">40000 - 60000</option>
+        <option value="2">60000 - 80000</option>
+        <option value="3">80000 - 100000</option>
+        <option value="4">100000 이상</option>
+    </select>
+    <br>
+
+    <p>가입일 (월) :</p>
+    <select name="subscr_month">
+        <option value="1">1월</option>
+        <option value="2">2월</option>
+        <option value="3">3월</option>
+        <option value="4">4월</option>
+        <option value="5">5월</option>
+        <option value="6">6월</option>
+        <option value="7">7월</option>
+        <option value="8">8월</option>
+        <option value="9">9월</option>
+        <option value="10">10월</option>
+        <option value="11">11월</option>
+        <option value="12">12월</option>
+    </select>
+    <br>
+
+    <p>나이 :</p>
+    <select name="age_group_ordinal">
+        <option value="2">20대</option>
+        <option value="5">30대</option>
+        <option value="7">40대</option>
+        <option value="8">50대</option>
+        <option value="6">60대</option>
+        <option value="4">70대</option>
+        <option value="3">80대</option>
+        <option value="1">90대</option>
+        <option value="0">100세 이상</option>
+
+
+    </select>
+    <br>
+    <p>결혼 여부 :</p>
+    <select name="marital_status_En">
+        <option value="1">기혼</option>
+        <option value="0">미혼</option>
+    </select>
+    <br>
+
+    <p>자녀 유무 :</p>
+    <select name="child_filled_mode">
+        <option value="1">유</option>
+        <option value="0">무</option>
+    </select>
+    <br>
+
+    <p>주택 가격 (달러) :</p>
+    <select name="home_value_model">
+        <option value="0">1000 - 24999</option>
+        <option value="1">25000 - 49999</option>
+        <option value="2">50000 - 74999</option>
+        <option value="3">75000 - 99999</option>
+        <option value="4">100000 - 124999</option>
+        <option value="5">125000 - 149999</option>
+        <option value="6">150000 - 174999</option>
+        <option value="7">175000 - 199999</option>
+        <option value="8">200000 - 224999</option>
+        <option value="9">225000 - 249999</option>
+        <option value="10">250000 - 274999</option>
+        <option value="11">275000 - 299999</option>
+        <option value="12">300000 - 349999</option>
+        <option value="13">350000 - 399999</option>
+        <option value="14">400000 - 449999</option>
+        <option value="15">450000 - 499999</option>
+        <option value="16">500000 - 749999</option>
+        <option value="17">750000 - 999999</option>
+        <option value="18">1000000 이상</option>
+    </select>
+    <br>
+
+    <p>현재 살고 있는 거주지의 거주 기간 (숫자 입력. 예) 1년 미만: 0, 3년 : 3) :</p>
+    <input type="number" name="resid_length_ordinal">
+    <br>
+
+    <p>주택 소유 여부 :</p>
+    <select name="home_own_freq">
+        <option value="1">소유</option>
+        <option value="0">미소유</option>
+    </select>
+    <br>
+
+    <p>대학 학위 소유 여부 :</p>
+    <select name="college_freq">
+        <option value="1">소유</option>
+        <option value="0">미소유</option>
+    </select>
+    <br>
+
+    <p>신용도 :</p>
+    <select name="fico_mode">
+        <option value="1">좋음</option>
+        <option value="0">나쁨</option>
+    </select>
+    <br>
+
+    <p>거주 지역 :</p>
+    <select name="county_Ordinal_Encoding">
+        <option value="0">Dallas</option>
+        <option value="1">Tarrant</option>
+        <option value="2">Collin</option>
+        <option value="3">Denton</option>
+        <option value="4">Ellis</option>
+        <option value="5">Kaufman</option>
+        <option value="6">Johnson</option>
+        <option value="7">Parker</option>
+        <option value="8">Rockwall</option>
+        <option value="9">Hunt</option>
+        <option value="10">Cooke</option>
+        <option value="11">Navarro</option>
+        <option value="12">Grayson</option>
+        <option value="13">Hill</option>
+    </select>
+    <br>
+
+    <input type="submit" value='Predict'>
+</form>
+</body>
+</html>
